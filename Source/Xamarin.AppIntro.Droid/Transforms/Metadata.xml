@@ -1,0 +1,54 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <!-- ProgressIndicatorController -->
+  <attr path="/api/package[@name='com.github.appintro.indicator']/
+              class[@name='ProgressIndicatorController']/
+              method[@name='newInstance']"
+        name="managedReturn">Android.Views.View</attr>
+
+  <!-- AppIntroFragment -->
+  <remove-node
+        path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntroFragment']/
+              method[@name='newInstance' and count(parameter) = 0]" />
+
+  <remove-node
+        path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntroFragment']/
+              method[@name='newInstance' and count(parameter) &lt; 9 and parameter[1][@type != 'com.github.appintro.model.SliderPage']]" />
+
+  <attr path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntroFragment']/
+              method[@name='newInstance' and count(parameter) = 9]"
+        name="managedName">_newInstance</attr>
+
+  <attr path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntroFragment']/
+              method[@name='newInstance' and count(parameter) = 9]"
+        name="visibility">private</attr>
+
+  <!-- SliderPage -->
+  <remove-node
+        path="/api/package[@name='com.github.appintro.model']/
+              class[@name='SliderPage']/
+              constructor[@name='SliderPage']" />
+
+  <!-- BackgroundResource -->
+  <attr path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntro2']/
+              method[@name='getBackgroundResource' and count(parameter)=0]"
+        name="managedName">_getBackgroundResource</attr>
+
+  <attr path="/api/package[@name='com.github.appintro']/
+              class[@name='AppIntro2']/
+              method[@name='setBackgroundResource' and count(parameter)=1 and parameter[1][@type='java.lang.Integer']]"
+        name="managedName">_setBackgroundResource</attr>
+  
+</metadata>
